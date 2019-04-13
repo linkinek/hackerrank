@@ -1,4 +1,4 @@
-package challenges.thirtyinterfaces;
+package challenges.interfaces;
 
 import java.util.ArrayList;
 import java.util.List;
