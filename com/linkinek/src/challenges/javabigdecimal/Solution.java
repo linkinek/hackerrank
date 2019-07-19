@@ -20,21 +20,12 @@ class Solution {
         }
         sc.close();
 
-        List<Map.Entry<String, Double>> map = new ArrayList<>();
-        Arrays.stream(s)
+        s = Arrays.stream(s)
                 .filter(Objects::nonNull)
-                .forEach(text -> map.add(new AbstractMap.SimpleEntry<>(text, new Double(text))));
-
-        map.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
-
-        int index = 0;
-        String[] newArray = new String[map.size()];
-        for (Map.Entry<String, Double> entry : map) {
-            newArray[index] = entry.getKey();
-            index++;
-        }
-
-        s = newArray;
+                .map(text -> new AbstractMap.SimpleEntry<>(text, new Double(text)))
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .map(AbstractMap.SimpleEntry::getKey)
+                .toArray(String[]::new);
 
         for (String s1 : s) {
             System.out.println(s1);
